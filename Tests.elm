@@ -17,7 +17,7 @@ singlePicturePost = {
   title = ""}
 
 singleBlogPostString = """
-{"title": "blog", "title": "This is my first blog", "content": "bla bla"}
+{"type": "blog", "title": "This is my first blog", "content": "bla bla"}
 """
 
 singleBlogPost : BlogPost
@@ -30,8 +30,14 @@ tests : Test
 tests =
   suite "A test suite"
         [
-          test "decoder line picturepost" (assertEqual (decodeString picturePostDecoder singlePicturePostString) (Ok singlePicturePost)),
-          test "decoder line blogpost" (assertEqual (decodeString blogPostDecoder singleBlogPostString) (Ok singleBlogPost))
+          test "decoder line picturepost" (assertEqual
+            (Ok (Picture singlePicturePost))
+            (decodeString postDecoder singlePicturePostString)
+            ),
+          test "decoder line blogpost" (assertEqual
+            (Ok (Blog singleBlogPost))
+            (decodeString postDecoder singleBlogPostString)
+          )
         ]
 
 main : Program Never
