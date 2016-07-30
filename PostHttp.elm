@@ -1,7 +1,8 @@
-module PostHttp exposing (postDecoder, getPosts)
+module PostHttp exposing (postListDecoder, postDecoder)
 import PostTypes exposing (..)
 import Json.Decode as Json exposing ((:=))
 import Json.Decode exposing (andThen)
+import Http
 
 blogPostDecoder : Json.Decoder (BlogPost)
 blogPostDecoder =
@@ -28,7 +29,10 @@ postDecoderByType postType =
     _ ->
       Json.fail <| "Unknown type: " ++ postType
 
+postListDecoder : Json.Decoder (PostList)
+postListDecoder =
+  Json.list postDecoder
 
-getPosts : Task Http.Error (List String)
-getPosts =
-  Http.get postDecoder ("data/images.js")
+--getPosts : Task Http.Error (List String)
+--getPosts =
+--  Http.get postDecoder ("data/images.js")

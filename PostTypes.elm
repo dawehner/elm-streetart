@@ -21,7 +21,7 @@ type alias PicturePost =
   }
 
 viewPicturePost model =
-  img [src model.url, title model.title] []
+  img [src ("data/images/" ++ model.url), title model.title] []
 
 type Post = Blog BlogPost | Picture PicturePost
 
