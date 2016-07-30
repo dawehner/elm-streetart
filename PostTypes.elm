@@ -1,7 +1,7 @@
 module PostTypes exposing (BlogPost, PicturePost, Post(Blog, Picture), PostList, viewPost, viewPostList)
 
 import Html exposing (text, Html, img, div, h3)
-import Html.Attributes exposing (src, title, width)
+import Html.Attributes exposing (src, title, width, style)
 import Markdown
 
 
@@ -21,7 +21,9 @@ type alias PicturePost =
   }
 
 viewPicturePost model =
-  img [src ("data/images/" ++ model.url), title model.title, width 712] []
+  let imageStyle = [ ("width", "712px"), ("margin-top", "64px")]
+  in
+    img [src ("data/images/" ++ model.url), title model.title, style imageStyle] []
 
 type Post = Blog BlogPost | Picture PicturePost
 
