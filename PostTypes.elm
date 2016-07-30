@@ -23,7 +23,7 @@ type alias PicturePost =
 viewPicturePost model =
   let imageStyle = [ ("width", "712px"), ("margin-top", "64px")]
   in
-    img [src ("data/images/" ++ model.url), title model.title, style imageStyle] []
+    img [src ("https://firebasestorage.googleapis.com/v0/b/elm-streetart.appspot.com/o/" ++ model.url ++ "?alt=media"), title model.title, style imageStyle] []
 
 type Post = Blog BlogPost | Picture PicturePost
 
