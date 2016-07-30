@@ -38,13 +38,15 @@ type Msg = MorePlease | FetchSucceed PostList | FetchFail Http.Error
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  case msg of
-    MorePlease -> (model, Task.perform FetchFail FetchSucceed getPosts)
+  let msg2 = Debug.log "muh" msg
+  in
+    case msg2 of
+      MorePlease -> (model, Task.perform FetchFail FetchSucceed getPosts)
 
-    FetchSucceed posts -> (posts, Cmd.none)
+      FetchSucceed posts -> (posts, Cmd.none)
 
-    FetchFail _ ->
-      (model, Cmd.none)
+      FetchFail _ ->
+        (model, Cmd.none)
 
 -- Subscriptions
 subscriptions : Model -> Sub Msg
