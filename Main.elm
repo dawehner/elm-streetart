@@ -3,11 +3,7 @@ import Html.Attributes exposing (src, title)
 import Markdown
 import Debug
 
-type alias BlogPost =
-  {
-    content : String,
-    title: String
-  }
+import PostTypes exposing (BlogPost, PicturePost, Post(..))
 
 model : BlogPost
 model = {
@@ -21,12 +17,6 @@ model = {
 viewBlogPost model =
   div [] [(h3 [] [text model.title]), (Markdown.toHtml [] model.content)]
 
-type alias PicturePost =
-  {
-    url: String,
-    title: String
-  }
-
 model2 : PicturePost
 model2 = {
   url = "http://hackenteer.com/wp-content/uploads/20130128-232104.jpg",
@@ -35,8 +25,6 @@ model2 = {
 
 viewPicturePost model =
   img [src model.url, title model.title] []
-
-type Post = Blog BlogPost | Picture PicturePost
 
 model3 : Post
 model3 = Blog model
