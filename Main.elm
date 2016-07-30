@@ -16,10 +16,10 @@ model = {
 * bar
 * baz
 ",
-  title = "My first blog post"}
+  title = "My title"}
 
 viewBlogPost model =
-  div [] [h3 model.title, (Markdown.toHtml [] model.content)]
+  div [] [(h3 [] [text model.title]), (Markdown.toHtml [] model.content)]
 
 type alias PicturePost =
   {
