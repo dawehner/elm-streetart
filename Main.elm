@@ -1,9 +1,6 @@
-import Html exposing (text, Html, img, div, h3)
-import Html.Attributes exposing (src, title)
-import Markdown
 import Debug
 
-import PostTypes exposing (BlogPost, PicturePost, Post(..))
+import PostTypes exposing (..)
 
 model : BlogPost
 model = {
@@ -14,35 +11,17 @@ model = {
 ",
   title = "My title"}
 
-viewBlogPost model =
-  div [] [(h3 [] [text model.title]), (Markdown.toHtml [] model.content)]
-
 model2 : PicturePost
 model2 = {
   url = "http://hackenteer.com/wp-content/uploads/20130128-232104.jpg",
   title = "Test streetart"}
 
 
-viewPicturePost model =
-  img [src model.url, title model.title] []
-
 model3 : Post
 model3 = Blog model
 
 model4 : Post
 model4 = Picture model2
-
-viewPost post =
-  case post of
-    Blog blog ->
-      viewBlogPost blog
-    Picture picture ->
-      viewPicturePost picture
-
-type alias PostList = List Post
-
-viewPostList postList =
-  div [] (List.map viewPost postList)
 
 model5 : PostList
 model5 = [model3, model4]
