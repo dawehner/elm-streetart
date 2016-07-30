@@ -8567,7 +8567,10 @@ var _user$project$PostTypes$viewPicturePost = function (model) {
 		_elm_lang$core$Native_List.fromArray(
 			[
 				_elm_lang$html$Html_Attributes$src(
-				A2(_elm_lang$core$Basics_ops['++'], 'data/images/', model.url)),
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'https://firebasestorage.googleapis.com/v0/b/elm-streetart.appspot.com/o/',
+					A2(_elm_lang$core$Basics_ops['++'], model.url, '?alt=media'))),
 				_elm_lang$html$Html_Attributes$title(model.title),
 				_elm_lang$html$Html_Attributes$style(imageStyle)
 			]),
@@ -8668,7 +8671,8 @@ var _user$project$Main$FetchSucceed = function (a) {
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p0 = msg;
+		var msg2 = A2(_elm_lang$core$Debug$log, 'muh', msg);
+		var _p0 = msg2;
 		switch (_p0.ctor) {
 			case 'MorePlease':
 				return {
