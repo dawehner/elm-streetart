@@ -5,7 +5,7 @@ import Http
 import Task
 
 import PostTypes exposing (..)
-import PostHttp exposing (postListDecoder)
+import PostHttp exposing (postListDecoder, getPosts)
 
 model : BlogPost
 model = {
@@ -42,7 +42,7 @@ update msg model =
   in
     case msg2 of
       MorePlease ->
-        (model, Task.perform FetchFail FetchSucceed (Http.get postListDecoder ("data/images.js")))
+        (model, Task.perform FetchFail FetchSucceed getPosts)
 
       FetchSucceed posts ->
         Debug.log "muh" (posts, Cmd.none)

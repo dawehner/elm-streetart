@@ -25,6 +25,8 @@ singleBlogPost = {
   title = "This is my first blog",
   content = "bla bla"}
 
+multiplePostsString = "[" ++ singlePicturePostString ++ ", " ++ singleBlogPostString ++ "]"
+multiplePosts = [Picture singlePicturePost, Blog singleBlogPost]
 
 tests : Test
 tests =
@@ -37,6 +39,10 @@ tests =
           test "decoder line blogpost" (assertEqual
             (Ok (Blog singleBlogPost))
             (decodeString postDecoder singleBlogPostString)
+          ),
+          test "decoder multiple posts" (assertEqual
+            (Ok (multiplePosts))
+            (decodeString postListDecoder multiplePostsString)
           )
         ]
 
