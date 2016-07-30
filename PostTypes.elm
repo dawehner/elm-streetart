@@ -7,8 +7,8 @@ import Markdown
 
 type alias BlogPost =
   {
-    content : String,
-    title: String
+    title: String,
+    content : String
   }
 
 viewBlogPost model =
